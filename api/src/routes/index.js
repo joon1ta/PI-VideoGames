@@ -159,7 +159,7 @@ router.post('/videogame', async (req, res) => {
       dbGenres.push(dbGenreOne)
       dbGenres.push(dbGenreTwo)
       console.log(dbGenres)
-      await newGame.setGenres(dbGenres) // agregamos los generos a la db
+      await newGame.setGenres(dbGenres) // agregamos los generos a la db para que haga sus respectivas relaciones con el videogame
       res.send(newGame)
     }
   } catch (error) {
