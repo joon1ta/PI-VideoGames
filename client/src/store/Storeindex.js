@@ -1,6 +1,6 @@
 import {createStore, applyMiddleware, compose} from 'redux';
-import rootReducer from '../reducer';
+import rootReducer from '../reducer/ReducerIndex';
 import thunk from 'redux-thunk';
 
 const composed = compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() )
-export const store = createStore( composed, rootReducer); // falta el rootReducer
+export const store = createStore(rootReducer, composed); // falta el rootReducer
