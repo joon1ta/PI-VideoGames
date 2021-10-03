@@ -28,6 +28,13 @@
     color: white;
     margin-left: 25px;
 }
+.links a:hover {
+    border-color: var(--thirdColor);
+    color: var(--thirdColor);
+    border: solid 1px;
+    border-radius: 4px;
+    transition: .5s ease-in-out all;
+}
 
 .leftSide {
     flex: 50%;
@@ -57,17 +64,21 @@ padding-right: 25px;
     width: 220px;
     height: 30px;
     border: none;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     font-size: 20px;
     padding-left: 15px;
-    color: var(--primaryColor);
+    color: white;
+    background-color: var(--secondaryColor);
 }
 
 .rightSide button {
     height: 32px;
-    width: 70px;
+    width: 50px;
     font-size: 16px;
-
+    background-color: var(--secondaryColor);
+    color: var(--thirdColor);
+    border: none;
+    padding-top: 5px;
 }
 
 
@@ -109,3 +120,4 @@ padding-right: 25px;
         font-size: 25px;
     }
 }
+

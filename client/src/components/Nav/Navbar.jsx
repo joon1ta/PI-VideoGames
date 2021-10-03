@@ -21,7 +21,7 @@ const [showLinks, setShowLinks] = useState(false);
             </button>
        </div>
        <div className={styles.rightSide}>
-           <input type="text" placeholder="Search Game"/>
+           <input type="text" placeholder="Search Game..."/>
            <button>
                <SearchIcon />
            </button>
