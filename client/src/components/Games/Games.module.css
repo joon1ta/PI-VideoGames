@@ -1,0 +1,72 @@
+:root {
+    --primaryColor: #1B1B23;
+    --secondaryColor: #26262E;
+    --thirdColor: #FB8C07;
+  }
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200;300;500&display=swap');
+
+.cards {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 30% 30% 30%;
+    text-decoration: none;
+}
+
+.links {
+    text-decoration: none;
+}
+
+body{
+    font-family: 'Gemunu Libre', sans-serif;
+    overflow-x: hidden;
+    background-color: var(--secondaryColor);
+   
+}
+
+.btnPage {
+    background-color: black;
+    width: 35px;
+    border-radius: 5px;
+    color: var(--thirdColor);
+    font-family: 'Staatliches', cursive;
+    font-size: 1.2em;
+   margin-top: 5px;
+    margin-left: 10px;
+    padding: 5px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border: none;
+   
+    text-align: center;
+}
+.btnPage:hover {
+    border-color: var(--thirdColor);
+    color: var(--thirdColor);
+    border: solid 1px;
+    border-radius: 4px;
+    transition: 2s ease all;
+}
+
+.pagingcont{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2vh ;
+}
+
+
+@media (max-width: 1200px){
+    .cards {
+        display: grid;
+        grid-template-columns: 45% 45%;
+        justify-content: center;
+    }
+}
+@media (max-width: 750px){
+    .cards {
+        display: grid;
+        grid-template-columns: 80%;
+        justify-content: center;
+    }
+}

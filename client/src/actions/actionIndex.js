@@ -27,9 +27,9 @@ export function getGames() {
     }
 }
 
-export function SearchGames(name) {
+export function searchGames(name) {
     return function (dispatch) {
-        return axios.get(`http://localhost:3002/videogames?name${name}`)
+        return axios.get(`http://localhost:3002/videogames?name=${name}`)
                 .then(response => {
                     dispatch({
                         type: SEARCH_GAMES,

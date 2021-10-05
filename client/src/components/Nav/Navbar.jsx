@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import styles from '../Nav/Navbar.module.css'
 import ReorderIcon from '@material-ui/icons/Reorder'
-import SearchIcon from '@material-ui/icons/Search'
+import SearchBar from '../SearchBar/SearchBar'
 
 function Navbar() {
 
@@ -21,10 +21,7 @@ const [showLinks, setShowLinks] = useState(false);
             </button>
        </div>
        <div className={styles.rightSide}>
-           <input type="text" placeholder="Search Game..."/>
-           <button>
-               <SearchIcon />
-           </button>
+           <SearchBar />
        </div>
     </nav>
     )
