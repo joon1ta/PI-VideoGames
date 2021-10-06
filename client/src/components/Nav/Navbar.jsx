@@ -12,9 +12,9 @@ const [showLinks, setShowLinks] = useState(false);
     <nav className={styles.navBar}>
        <div className={styles.leftSide}>
            <div className={styles.links} id={showLinks ? "hidden" : ""}>
-           <Link>Home</Link>
+           <Link to='/'>Home</Link>
            <Link>Categories</Link>
-           <Link>Create Game</Link>
+           <Link to='/creategame'>Create Game</Link>
            </div>
            <button onClick={() => setShowLinks(!showLinks)}>
                <ReorderIcon />

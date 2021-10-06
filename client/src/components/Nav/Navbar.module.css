@@ -35,7 +35,9 @@
     color: var(--thirdColor);
     border: solid 1px;
     border-radius: 4px;
-    transition: .5s ease-in-out all;
+    transition: .1s ease-in-out all;
+    padding: .1em .2em;
+    letter-spacing: 1px;
 }
 
 .leftSide {
