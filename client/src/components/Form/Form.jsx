@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import styles from "./Form.module.css"
+
 
 const validateForm = (input) => {
     let error = [];
@@ -87,32 +87,32 @@ function Form() {
 
     return (
         
-            <form className = {styles.form} onSubmit={handleSubmit}>
-                <h2 className ={styles.title}>Create Videogame</h2>
-                <div className ={` ${styles.inputcontainer} ${styles.ic1} `} >
+            <form  onSubmit={handleSubmit}>
+                <h2>Create Videogame</h2>
+                <div >
 
-                    <input type="text" className = {styles.input} name ="name" value={input.name} onChange={handleChange} placeholder = "Name"/>
-                    {error.name ? <p className ="danger">{error.name}</p> : null}
+                    <input type="text" name ="name" value={input.name} onChange={handleChange} placeholder = "Name"/>
+                    {error.name ? <p >{error.name}</p> : null}
                 </div>
-                <div className = {` ${styles.inputcontainer} ${styles.ic1} `} >
+                <div  >
 
-                    <input type="text" className ={styles.input} name ="description" value={input.description} onChange={handleChange} placeholder = "Description" />
-                    {error.description ? <p className ={styles.danger}>{error.description}</p> : null}
+                    <input type="text"  name ="description" value={input.description} onChange={handleChange} placeholder = "Description" />
+                    {error.description ? <p>{error.description}</p> : null}
                 </div>
-                <div className = {` ${styles.inputcontainer} ${styles.ic1} `}>
+                <div>
 
-                    <input type="date" className ={styles.input} name = "release_date" value ={input.release_date} onChange={handleChange} placeholder = "Released" />
+                    <input type="date" name = "release_date" value ={input.release_date} onChange={handleChange} placeholder = "Released" />
                 </div>
-                <div className = {` ${styles.inputcontainer} ${styles.ic1} `}>
+                <div >
 
-                   <input type="number" className ={styles.input} name= "rating" value ={input.rating} onChange={handleChange} placeholder = "Rating"/>
-                   {error.rating ? <p className ={styles.danger}>{error.rating}</p> : null}
+                   <input type="number" name= "rating" value ={input.rating} onChange={handleChange} placeholder = "Rating"/>
+                   {error.rating ? <p>{error.rating}</p> : null}
                 </div>
 
-                <div  className ={styles.genres}>
+                <div >
                     <div>
                     <span>Genre 1</span>     
-                        <select name="genreOne" id ="genres" value ={input.genreOne} onChange ={handleSelect} className ={styles.genresform}>
+                        <select name="genreOne" id ="genres" value ={input.genreOne} onChange ={handleSelect} >
                             <option value= ""> -- select an option -- </option>
                             <option value= "1">Action</option> 
                             <option value="2">Indie</option>
@@ -137,7 +137,7 @@ function Form() {
                     </div>    
                     <div >
                     <label>Genre 2</label>     
-                        <select name="genreTwo" id ="genres" value ={input.genreTwo} onChange ={handleSelectTwo} className ={styles.genresform}>
+                        <select name="genreTwo" id ="genres" value ={input.genreTwo} onChange ={handleSelectTwo}>
                             <option value= ""> -- select an option -- </option>
                             <option value= "1">Action</option> 
                             <option value="2">Indie</option>
@@ -162,7 +162,7 @@ function Form() {
                     </div>  
                 </div>  
                 
-                <div className = {styles.platforms}>  
+                <div>  
                     
                     <label><input type= "checkbox" name ="ps5" value ="PS5" onChange ={handleBoxs}/> PS5 </label>
                     <label><input type= "checkbox" value ="Nintendo" onChange ={handleBoxs}/> Nintendo </label>
@@ -172,10 +172,10 @@ function Form() {
                     
                 </div> 
                 
-                <button className ={styles.submit}>Create</button>
-                        <div className ={styles.contbackhome}>
+                <button >Create</button>
+                        <div>
                             <Link to= "/home">
-                            <button className ={styles.backhome}>Home</button>
+                            <button >Home</button>
                             </Link>
                         </div>
             </form>

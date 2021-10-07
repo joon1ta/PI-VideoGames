@@ -64,16 +64,16 @@ function rootReducer(state = initialState, action) {
         case GENRE_FILTER:
             return { 
                 ...state,
-                games: state.games.filter(g => { // se filtran los generos por juego, y se encuentra el genero que sea igual al action
-                    return g.genres.find(genre => {
+                games: state.games.find(genre => {
                         return genre.name.toLowerCase() === action.payload
-                    }) 
-                })
+                    }) // se filtran los generos por juego, y se encuentra el genero que sea igual al action
+                    
+                
             }
         case CREATED_GAME:
             return { 
                 ...state,
-                games: state.games.filter(g => {
+                games: state.games.find(g => {
                     return g.id.length > 10 // buscamos si el id es mayor porque sabemos que los creados por el usuario tiene ams de 10 digitos
                 })
             }

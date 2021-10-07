@@ -23,7 +23,7 @@ const getGame = async () => {
 console.log(game)
 useEffect(() =>{
     getGame(id)
-}, [])
+},)
 
     if(loading) { 
         return (
