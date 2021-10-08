@@ -4,12 +4,18 @@ import { getGames } from '../../actions/ActionIndex'
 import GameCard from '../GameCard/GameCard'
 import { Link } from 'react-router-dom';
 import styles from './Games.module.css'
+import Filters from '../Filters/Filters'
+
 function Games() {
 
 const games = useSelector(state => state.games)
 const dispatch = useDispatch();
 const [current, setCurrent] = useState(0);
 const [gamesPerPage, setGamesPerPage] = useState(9);
+
+
+
+
 
 const nextPage = () => {
     if(current < games.length) {
@@ -30,15 +36,21 @@ const prevPage = () => {
 
 useEffect(() => {
    dispatch(getGames())
-  
+   
 }, [dispatch])
 
 
 
     return (
-        <div>
+        <div className={styles.containerGames}>
+            
+               <div className={styles.containerFilters}>
+                    <Filters />
+                  
+               </div>
                
         <div className={styles.cards}>
+      
             {
                 games.createInDatabase ?
 
@@ -50,15 +62,17 @@ useEffect(() => {
                             <GameCard  name={game.name} image={game.image} rating={game.rating} genres={game.genres} key={game.id}/>
                         </Link>
                     )
-                }).slice(current, gamesPerPage)
+                }).slice(current, gamesPerPage) 
             }
+          <div className ={styles.pagingcont}>
+          <button className={styles.btnPage} onClick={prevPage}>&lt;</button>
+          <button className={styles.btnPage} onClick={nextPage}>&gt;</button>
+          </div>
         </div>
-
-        <div className ={styles.pagingcont}>
-            <button className={styles.btnPage} onClick={prevPage}>&lt;</button>
-            <button className={styles.btnPage} onClick={nextPage}>&gt;</button>
+          
+      
         </div>
-        </div>
+       
     )
 }
 

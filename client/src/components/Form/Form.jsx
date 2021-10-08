@@ -39,7 +39,7 @@ function Form() {
     })
     useEffect(() => {
         dispatch(getGenres())
-    },[])
+    },[dispatch])
 
 
     const handleChange = (e) => {
@@ -124,7 +124,7 @@ function Form() {
                     <div>
                     <label>Genre One</label>     
                         <select className={styles.createSelect} name="genreOne" id ="genres" value ={input.genreOne} onChange ={(e) => handleSelect(e)} >
-                        <option value= ""> -- select mapeo -- </option>
+                        <option value= ""> -- select first genre -- </option>
                             {
                                 genres.map(g => { return ( <option value={g.id}>{g.name}</option> )})
                             }

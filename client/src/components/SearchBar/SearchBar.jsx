@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { searchGames } from '../../actions/ActionIndex';
 import{ Search} from '@material-ui/icons'
+import styles from './SearchBar.module.css'
 const SearchBar = () => {
 
 const [input, setInput] = useState('');
@@ -19,7 +20,7 @@ const handleChange = (e) => {
     return (
         
             <form onSubmit={handleSubmit}>
-            <input onChange={handleChange} value={input} type="text" placeholder="Search Game..."/>
+            <input className={styles.inputSearch} onChange={handleChange} value={input} type="text" placeholder="Search Game..."/>
            
             <button>
             <Search />

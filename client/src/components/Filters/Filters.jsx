@@ -1,52 +1,34 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
-import { genreFilter, getGames, createdGame } from '../../actions/ActionIndex'
-
+import React, {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { genreFilter, getGames,  getGenres } from '../../actions/ActionIndex'
+import styles from './Filters.module.css'
 function Filters() {
 
 const dispatch = useDispatch();
-
+const genres = useSelector(state => state.genres)
 const handleReload = () => {
     dispatch(getGames());
 }
-const handleCreated = () => {
-    dispatch(createdGame());
-}
 
+
+useEffect(() => {
+    dispatch(getGenres())
+},[dispatch])
 
     return (
         <div>
-            <h4>Filter by</h4>
-            <div>
-                
-        
-                <select name="" id="" onChange= {(e) => dispatch(genreFilter(e.target.value)) }>
-                            <option value= "">-- Genres --</option>
-                            <option value="action">Action</option> 
-                            <option value="indie">Indie</option>
-                            <option value="adventure">Adventure</option>
-                            <option value="role-playing-games-rpg">Role</option>
-                            <option value="strategy">Strategy</option>
-                            <option value="shooter">Shooter</option>
-                            <option value="casual">Casual</option>
-                            <option value="simulation">Simulation</option>
-                            <option value="puzzle">Puzzle</option>
-                            <option value="arcade">Arcade</option>
-                            <option value="platformer">Platformer</option>
-                            <option value="racing">Racing</option>
-                            <option value="massively-multiplayer">Multiplayer</option>
-                            <option value="sports">Sports</option>
-                            <option value="fighting">Fighting</option>
-                            <option value="family">Family</option>
-                            <option value="board-games">Board-games</option>
-                            <option value="educational">Educational</option>
-                            <option value="card">Card</option>
-                </select>
+            <h4 className={styles.h4Filter}>Filter by</h4>
+            <div className={styles.containerButtons}>
+                {
+                    genres.map(g => { return ( <button className={styles.buttonsFilters} onClick= {(e) => dispatch(genreFilter(e.target.value)) } value={g.name}>{g.name.toUpperCase()}</button> )})
+                    
+                }
+               
 
                 
-                <button onClick ={handleCreated} >Made by you</button>
+            
 
-                <button onClick = {handleReload} >All</button>
+                <button className={styles.buttonsFilters} onClick = {handleReload} >{'All Games'.toUpperCase()}</button>
 
                 
             </div>

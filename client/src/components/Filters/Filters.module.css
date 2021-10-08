@@ -1,0 +1,26 @@
+.containerButtons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.h4Filter {
+    font-size: 30px;
+    text-align: center;
+    color: var(--thirdColor);
+}
+
+.buttonsFilters{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: white;
+    background-color: var(--secondaryColor);
+    border: none;
+}
+.buttonsFilters:hover {
+    color: var(--thirdColor);
+    transform: rotate(5deg);
+    transition: all ease-in-out .3s;
+}

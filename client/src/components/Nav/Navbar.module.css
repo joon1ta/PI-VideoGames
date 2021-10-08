@@ -9,8 +9,23 @@
   button:hover {
      cursor: pointer;
   }
-
-
+.buttonCreated {
+    color: white;
+    background-color:  var(--primaryColor);
+    width: 100px;
+    border: none;
+    font-size: 24px;
+}
+.containerOrders {
+    display: flex;
+    
+}
+.containerGridOrders{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 5px;
+    margin-left: 80px;
+}
 .navBar {
     background-color: var(--primaryColor);
     width: 100%;

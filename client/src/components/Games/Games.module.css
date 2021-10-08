@@ -4,7 +4,15 @@
     --thirdColor: #FB8C07;
   }
 @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200;300;500&display=swap');
+.containerGames{
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
 
+.containerFilters{
+    display: flex;
+    flex-direction: column;
+}
 .cards {
     display: grid;
     justify-content: center;

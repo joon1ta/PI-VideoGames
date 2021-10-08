@@ -1,0 +1,46 @@
+.containerDetails {
+    width: 100%;
+  height: 1000px;
+}
+.vgname {
+    color: var(--thirdColor);
+    margin-top: 35px;
+    margin-left: 20px;
+}
+.containerDetails2 {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+}
+
+.descriptionDetails {
+    margin-top: 5px;
+    padding-top: 10px;
+    line-height: 35px;
+    font-weight: 200;
+    color: white;
+}
+
+.containerh2p p {
+    margin-left: 20px;
+}
+.containerDetailsProfile p {
+    margin-left: 20px;
+}
+
+.linkDetails{
+    margin-left: 600px;
+    
+}
+.btnBackHome {
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+    color: white;
+    background-color: var(--thirdColor);
+    border: none;
+    border-radius: 4px;
+}
+.btnBackHome:hover {
+    background-color: var(--primaryColor);
+    transition: all ease .2s;
+}
