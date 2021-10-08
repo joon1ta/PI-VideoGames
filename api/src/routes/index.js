@@ -84,7 +84,7 @@ router.get("/videogames", async (req, res) => {
                   through: {attributes: []}
               }
           });
-            const allGames = gameSearched.concat(dbGame)
+            const allGames = dbGame.concat(gameSearched)
             res.send(allGames)
           } else {
             res.send(dbGame)
@@ -130,41 +130,58 @@ router.get('/genres', async (req, res) => {
     const genres = await axios.get(`${URL}genres?key=${YOUR_API_KEY}`) // traemos los generos de la api
     
     let category = genres.data.results.map(categories => {
-      return {name: categories.slug}
+      return {name: categories.slug,
+              id: categories.id}
     })
+
+    await category.forEach(el => {
+      Genre.findOrCreate({
+        where: {name: el.name,
+                id: el.id }
+      })
+    })
+    console.log(category)
     res.send(category)
   } catch(error) {
     console.log(error)
   }
 })
 router.post('/videogame', async (req, res) => {
-  const {name, description, release_date, platform, rating, genreOne, genreTwo} = req.body // datos traidos del formulario del front
-
-  try {
+  const {name, description, release_date, platform, rating, genreOne, genreTwo } = req.body    //aca van los datos que llegan desde el form
     
-    if(name && description && platform){
-      const newGame = await Videogame.create({
-        id: uuidv4(),
-        name,
-        description,
-        release_date,
-        rating,
-        platform
+    try{
       
-      })
-      const dbGenreOne = await Genre.findByPk(genreOne)
-      const dbGenreTwo = await Genre.findByPk(genreTwo)
-
-      let dbGenres = []
-      dbGenres.push(dbGenreOne)
-      dbGenres.push(dbGenreTwo)
-      console.log(dbGenres)
-      await newGame.setGenres(dbGenres) // agregamos los generos a la db para que haga sus respectivas relaciones con el videogame
-      res.send(newGame)
+        
+        console.log(genreOne)
+        console.log(genreTwo)
+        if(name && description && platform){
+            const newGame = await Videogame.create({   
+                     
+                       name,
+                       description,
+                       release_date,            
+                       rating,
+                       platform                                          
+            })
+            console.log("este es el juego creadooooooo",newGame)
+            const dbGenre2 = await Genre.findByPk(genreTwo)
+            const dbGenre1 = await Genre.findByPk(genreOne)      
+            
+            console.log('holaaaaaaaa',dbGenre1)
+            console.log('holaaaaaaa',dbGenre2)
+            let dbGenres = [] 
+            dbGenres.push(dbGenre1)
+            dbGenres.push(dbGenre2)
+            console.log(dbGenres)
+                        
+             await newGame.addGenres(dbGenres)    
+              
+             return res.send(newGame)
+        }
     }
-  } catch (error) {
-    console.log(error)
-  }
+    catch(error){
+        console.log(error)
+    }
 })
 
 module.exports = router;

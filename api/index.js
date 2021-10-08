@@ -19,20 +19,24 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const axios = require('axios');
-const { Genre } = require('./src/db');
-const { YOUR_API_KEY } = process.env; 
-const URL = 'https://api.rawg.io/api/';
+
+
 require('dotenv').config();
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then( async () => {
-  const lista = await axios.get(`${URL}genres?key=${YOUR_API_KEY}`) 
-  let categories = lista.data.results.map( (cat) => {                 //mapeo para solo guardar los nombres y el id correspondiente a cada genero
-   return { name: cat.slug,
-            id: cat.id }
-})
-  await Genre.bulkCreate(categories) // creamos todos los generos en la base de datos
+conn.sync({ force: false }).then( async () => {
+ 
+//   let categories = lista.data.results.map( (cat) => {                 //mapeo para solo guardar los nombres y el id correspondiente a cada genero
+//    return { name: cat.slug,
+//             id: cat.id }
+// })
+// console.log(categories)
+// await categories.forEach(el => {
+//     Genre.findOrCreate({
+//       where: {name: el.name}
+//     })
+//   })
+   // creamos todos los generos en la base de datos
   server.listen(3002, () => {
     console.log('%s listening at 3002'); // eslint-disable-line no-console
   });
