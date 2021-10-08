@@ -8,7 +8,7 @@ export const RATING_ASC = "RATING_ASC"
 export const RATING_DESC = "RATING_DESC"
 export const GENRE_FILTER = "GENRE_FILTER"
 export const CREATED_GAME = "CREATED_GAME"
-
+export const GET_GENRES = "GET_GENRES"
 
 
 
@@ -21,6 +21,17 @@ export function getGames() {
                .then(response => {
                    dispatch({
                        type: GET_GAMES,
+                       payload: response.data
+                   })
+               })
+    }
+}
+export function getGenres() {
+    return function (dispatch) {
+        return axios.get('http://localhost:3002/genres') // Llamamos a la ruta en el servidor
+               .then(response => {
+                   dispatch({
+                       type: GET_GENRES,
                        payload: response.data
                    })
                })

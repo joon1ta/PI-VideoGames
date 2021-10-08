@@ -1,0 +1,134 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  :root {
+    --primaryColor: #1B1B23;
+    --secondaryColor: #26262E;
+    --thirdColor: #FB8C07;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200;300;500&display=swap'); 
+
+  .containerForm {
+background-image: url('../img/img2.jpg');
+background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 30%, rgba(0, 0, 0, 0.438) 84%, rgba(0, 0, 0, 0.199) 100%), url('../img/img2.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+  }
+
+  
+  .createForm {
+    
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background: #14141b70;
+    border-radius: 8px;
+    
+  }
+  
+  h1 {
+    margin: 0 0 30px 0;
+    text-align: center;
+    color: white;
+  }
+  span {
+      color: var(--ThirdColor);
+  }
+ 
+  .createInput,
+  textarea,
+  .createSelect {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    font-size: 16px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 100%;
+    background-color: #e8eeef;
+    color: #8a97a0;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+  
+  
+  input[type="checkbox"] {
+    margin: 0 4px 8px 0;
+    display: inline;
+  }
+  .check {
+  display: flex;
+  }
+  select {
+    padding: 6px;
+    height: 32px;
+    border-radius: 2px;
+    
+  }
+  
+  .createButton {
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    background-color: var(--thirdColor);
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid var(--thirdColor);
+    border-width: 1px 1px 3px;
+    box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+    margin-bottom: 10px;
+  }
+  
+  fieldset {
+    margin-bottom: 30px;
+    border: none;
+  }
+  
+  legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  label {
+   
+    margin-bottom: 8px;
+    color: white;
+  }
+  
+  label.light {
+    font-weight: 300;
+    display: inline;
+    color: white;
+    
+  }
+  
+  .number {
+    background-color: var(--thirdColor);
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 100%;
+  }
+  
+  @media screen and (min-width: 480px) {
+  
+    .createForm {
+      max-width: 480px;
+    }
+  
+  }

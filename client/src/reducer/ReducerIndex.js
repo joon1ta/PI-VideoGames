@@ -6,14 +6,17 @@ import {
     RATING_ASC,
     RATING_DESC,
     GENRE_FILTER,
-    CREATED_GAME
+    CREATED_GAME,
+    GET_GENRES
 } from '../actions/ActionIndex'
 
 
 
 
 const initialState = {
-    games: []
+    games: [],
+    allGames: [],
+    genres: []
 };
 
 
@@ -22,7 +25,8 @@ function rootReducer(state = initialState, action) {
         case GET_GAMES:
             return {
                 ...state,
-                games: action.payload
+                games: action.payload,
+                allGames: action.payload
             }
         case SEARCH_GAMES:
             return { 
@@ -37,6 +41,11 @@ function rootReducer(state = initialState, action) {
                     if(prevGame.name < nextGame.name) return -1
                     return 0
                 })
+            }
+        case GET_GENRES:
+            return {
+                ...state,
+                genres: action.payload
             }
         case  NAME_DESC:
             return { 
@@ -62,19 +71,24 @@ function rootReducer(state = initialState, action) {
                 })
             }
         case GENRE_FILTER:
-            return { 
-                ...state,
-                games: state.games.find(genre => {
-                        return genre.name.toLowerCase() === action.payload
-                    }) // se filtran los generos por juego, y se encuentra el genero que sea igual al action
+            let gamesFiltered = state.allGames
+            gamesFiltered = gamesFiltered.filter(game => game.genres.find(g => {
+                return g.name.toLowerCase() === action.payload
+            }))
+            return { ...state, games: gamesFiltered}
+            // return { ...state, games: gamesFiltered.filter((game) => {
+            //     return game.genres.find((genre) => {
+            //         return genre.name.toLowerCase() === action.payload
+            //     })})
+            //         } // se filtran los generos por juego, y se encuentra el genero que sea igual al action
                     
                 
-            }
+            
         case CREATED_GAME:
             return { 
                 ...state,
                 games: state.games.find(g => {
-                    return g.id.length > 10 // buscamos si el id es mayor porque sabemos que los creados por el usuario tiene ams de 10 digitos
+                    return g.id.length === 36 // buscamos si el id es mayor porque sabemos que los creados por el usuario tiene ams de 10 digitos
                 })
             }
         default:

@@ -17,12 +17,12 @@ const handleCreated = () => {
     return (
         <div>
             <h4>Filter by</h4>
-            <div >
+            <div>
                 
         
                 <select name="" id="" onChange= {(e) => dispatch(genreFilter(e.target.value)) }>
                             <option value= "">-- Genres --</option>
-                            <option value= "action">Action</option> 
+                            <option value="action">Action</option> 
                             <option value="indie">Indie</option>
                             <option value="adventure">Adventure</option>
                             <option value="role-playing-games-rpg">Role</option>

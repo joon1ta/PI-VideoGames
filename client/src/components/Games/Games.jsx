@@ -1,4 +1,4 @@
-import React,  {Fragment,useState, useEffect} from 'react'
+import React,  {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux';
 import { getGames } from '../../actions/ActionIndex'
 import GameCard from '../GameCard/GameCard'
@@ -30,17 +30,24 @@ const prevPage = () => {
 
 useEffect(() => {
    dispatch(getGames())
+  
 }, [dispatch])
 
 
+
     return (
-        <Fragment>
+        <div>
+               
         <div className={styles.cards}>
             {
-                games.map(game => {
+                games.createInDatabase ?
+
+                <GameCard  name={games.name} image={games.image} rating={games.rating} genres={games.genres} key={games.id}/>
+
+                : games?.map(game => {
                     return (
                         <Link to={`/gamedetail/${game.id}`} className={styles.links}>
-                            <GameCard name={game.name} image={game.image} rating={game.rating} id={game.id} genres={game.genres} key={game.id}/>
+                            <GameCard  name={game.name} image={game.image} rating={game.rating} genres={game.genres} key={game.id}/>
                         </Link>
                     )
                 }).slice(current, gamesPerPage)
@@ -51,7 +58,7 @@ useEffect(() => {
             <button className={styles.btnPage} onClick={prevPage}>&lt;</button>
             <button className={styles.btnPage} onClick={nextPage}>&gt;</button>
         </div>
-        </Fragment>
+        </div>
     )
 }
 

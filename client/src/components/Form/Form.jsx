@@ -1,7 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-
+import styles from './Form.module.css'
+import {getGenres} from '../../actions/ActionIndex'
 
 const validateForm = (input) => {
     let error = [];
@@ -23,7 +25,8 @@ const validateForm = (input) => {
 
 
 function Form() {
-
+    const dispatch = useDispatch()
+    const genres = useSelector(state => state.genres)
     const [error, setError] = useState({})
     const [input, setInput] = useState({
         name: '',                   //required
@@ -34,6 +37,10 @@ function Form() {
         genreTwo: '',
         platform: []   
     })
+    useEffect(() => {
+        dispatch(getGenres())
+    },[])
+
 
     const handleChange = (e) => {
         setInput({
@@ -86,100 +93,72 @@ function Form() {
 
 
     return (
-        
-            <form  onSubmit={handleSubmit}>
-                <h2>Create Videogame</h2>
-                <div >
-
-                    <input type="text" name ="name" value={input.name} onChange={handleChange} placeholder = "Name"/>
+        <div className={styles.containerForm}>
+            <form className={styles.createForm}  onSubmit={handleSubmit}>
+                <h1><span>Upload</span> Videogame</h1>
+                 <fieldset>
+                 <legend><span className={styles.number}>1</span>Basic Game Info</legend>
+                <div>
+               
+                    <input className={styles.createInput} type="text" name ="name" value={input.name} onChange={handleChange} placeholder = "Name"/>
                     {error.name ? <p >{error.name}</p> : null}
                 </div>
                 <div  >
 
-                    <input type="text"  name ="description" value={input.description} onChange={handleChange} placeholder = "Description" />
+                    <input className={styles.createInput} type="text"  name ="description" value={input.description} onChange={handleChange} placeholder = "Description" />
                     {error.description ? <p>{error.description}</p> : null}
                 </div>
                 <div>
 
-                    <input type="date" name = "release_date" value ={input.release_date} onChange={handleChange} placeholder = "Released" />
+                    <input className={styles.createInput} type="date" name = "release_date" value ={input.release_date} onChange={handleChange} placeholder = "Released" />
                 </div>
                 <div >
 
-                   <input type="number" name= "rating" value ={input.rating} onChange={handleChange} placeholder = "Rating"/>
+                   <input className={styles.createInput} type="number" name= "rating" value ={input.rating} onChange={handleChange} placeholder = "Rating"/>
                    {error.rating ? <p>{error.rating}</p> : null}
                 </div>
-
+                </fieldset>
+                <fieldset>  
+                <legend><span className={styles.number}>2</span>Game Profile</legend>
                 <div >
                     <div>
-                    <span>Genre 1</span>     
-                        <select name="genreOne" id ="genres" value ={input.genreOne} onChange ={handleSelect} >
-                            <option value= ""> -- select an option -- </option>
-                            <option value= "1">Action</option> 
-                            <option value="2">Indie</option>
-                            <option value="3">Adventure</option>
-                            <option value="4">Role</option>
-                            <option value="5">Strategy</option>
-                            <option value="6">Shooter</option>
-                            <option value="7">Casual</option>
-                            <option value="8">Simulation</option>
-                            <option value="9">Puzzle</option>
-                            <option value="10">Arcade</option>
-                            <option value="11">Platformer</option>
-                            <option value="12">Racing</option>
-                            <option value="13">Multiplayer</option>
-                            <option value="14">Sports</option>
-                            <option value="15">Fighting</option>
-                            <option value="16">Family</option>
-                            <option value="17">Board-games</option>
-                            <option value="18">Educational</option>
-                            <option value="19">Card</option>
+                    <label>Genre One</label>     
+                        <select className={styles.createSelect} name="genreOne" id ="genres" value ={input.genreOne} onChange ={(e) => handleSelect(e)} >
+                        <option value= ""> -- select mapeo -- </option>
+                            {
+                                genres.map(g => { return ( <option value={g.id}>{g.name}</option> )})
+                            }
                         </select>
                     </div>    
                     <div >
-                    <label>Genre 2</label>     
-                        <select name="genreTwo" id ="genres" value ={input.genreTwo} onChange ={handleSelectTwo}>
-                            <option value= ""> -- select an option -- </option>
-                            <option value= "1">Action</option> 
-                            <option value="2">Indie</option>
-                            <option value="3">Adventure</option>
-                            <option value="4">Role</option>
-                            <option value="5">Strategy</option>
-                            <option value="6">Shooter</option>
-                            <option value="7">Casual</option>
-                            <option value="8">Simulation</option>
-                            <option value="9">Puzzle</option>
-                            <option value="10">Arcade</option>
-                            <option value="11">Platformer</option>
-                            <option value="12">Racing</option>
-                            <option value="13">Multiplayer</option>
-                            <option value="14">Sports</option>
-                            <option value="15">Fighting</option>
-                            <option value="16">Family</option>
-                            <option value="17">Board-games</option>
-                            <option value="18">Educational</option>
-                            <option value="19">Card</option>
+                    <label>Genre Two</label>     
+                        <select className={styles.createSelect} name="genreTwo" id ="genres" value ={input.genreTwo} onChange ={(e) => handleSelectTwo(e)}>
+                            <option value= ""> -- select second genre -- </option>
+                            {
+                                genres.map(g => { return ( <option value={g.id}>{g.name}</option> )})
+                            }
                         </select>   
                     </div>  
                 </div>  
                 
-                <div>  
+                <div classname={styles.check}>  
                     
-                    <label><input type= "checkbox" name ="ps5" value ="PS5" onChange ={handleBoxs}/> PS5 </label>
+                    <label ><input type= "checkbox" name ="ps5" value ="PS5" onChange ={handleBoxs}/> PS5 </label>
                     <label><input type= "checkbox" value ="Nintendo" onChange ={handleBoxs}/> Nintendo </label>
-                    <label><input type= "checkbox" value ="Pc" onChange ={handleBoxs}/> PC </label>
-                    <label><input type= "checkbox" value ="Xbox" onChange ={handleBoxs}/> Xbox </label>
-                    <label><input type= "checkbox" value ="PS4" onChange ={handleBoxs}/> PS4 </label>
+                    <label ><input type= "checkbox" value ="Pc" onChange ={handleBoxs}/> PC </label>
+                    <label ><input type= "checkbox" value ="Xbox" onChange ={handleBoxs}/> Xbox </label>
+                    <label ><input type= "checkbox" value ="PS4" onChange ={handleBoxs}/> PS4 </label>
                     
                 </div> 
-                
-                <button >Create</button>
+                </fieldset>
+                <button className={styles.createButton} >Upload</button>
                         <div>
                             <Link to= "/home">
-                            <button >Home</button>
+                            <button className={styles.createButton}>Exit</button>
                             </Link>
                         </div>
             </form>
-       
+            </div>
     )
 }
 

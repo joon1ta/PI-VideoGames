@@ -4,6 +4,7 @@ import Landing from './components/Landing/Landing'
 import {BrowserRouter, Route, Switch } from 'react-router-dom';
 import GameDetail from './components/GameDetails/GameDetails';
 import Form from './components/Form/Form';
+import Footer from './components/Footer/Footer'
 function App() {
   return (
     <BrowserRouter>
@@ -14,11 +15,12 @@ function App() {
     <Route path="/gamedetail/:id"> <GameDetail /> </Route> 
     <Route path="/creategame/"> <Form /> </Route> 
    
-
+    
     
 
 
     </Switch>
+    <Footer />
   </BrowserRouter>
   );
 }

@@ -15,7 +15,7 @@ const [showLinks, setShowLinks] = useState(false);
        <div className={styles.leftSide}>
            <div className={styles.links} id={showLinks ? "hidden" : ""}>
            <Link to='/'>Home</Link>
-           <Link>Categories</Link>
+         
            
            <Link to='/creategame'>Create Game</Link>
            </div>

@@ -1,0 +1,49 @@
+.cardsContainer {
+    
+    max-width: 320px;
+    margin-top: 40px;
+    background-color: #1B1B23;
+    -webkit-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+}
+
+.h3Cards {
+    color: white;
+    text-align: center;
+    padding-bottom: 25px;
+    letter-spacing: 1px;
+    font-weight: 200;
+    color: #FB8C07;
+}
+.h3CardsTitle {
+    color: white;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+.imgcontainer {
+    max-height: 280px;
+}
+
+
+
+.cardsContainer:hover {
+    transform: scale(1.08);
+    transition: all 0.5s;
+    background-color: rgba(3, 3, 3, 0.719);
+   
+}
+
+.cardRating {
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 25px;
+}
+
+.cardSpan{
+    color: #FB8C07;
+}
