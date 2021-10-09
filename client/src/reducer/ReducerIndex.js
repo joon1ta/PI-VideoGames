@@ -87,7 +87,7 @@ function rootReducer(state = initialState, action) {
         case CREATED_GAME:
             return { 
                 ...state,
-                games: state.games.find(g => {
+                games: state.games.filter(g => {
                     return g.id.length === 36 // buscamos si el id es mayor porque sabemos que los creados por el usuario tiene ams de 10 digitos
                 })
             }

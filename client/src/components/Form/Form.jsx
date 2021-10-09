@@ -6,14 +6,14 @@ import styles from './Form.module.css'
 import {getGenres} from '../../actions/ActionIndex'
 
 const validateForm = (input) => {
-    let error = [];
+    let error = {};
     if(!input.name) {
         error.name = "Name is required"
     } else if(!/^[a-zA-Z ]+$/.test(input.name)) {
         error.name = "Name is invalid"  
     } else if(!input.description) {
         error.description = "Description is required"
-    } else if(!input.rating > 5) {
+    } else if(input.rating > 5) {
         error.rating = "The max rating is 5"
     }
     return error;
@@ -28,6 +28,7 @@ function Form() {
     const dispatch = useDispatch()
     const genres = useSelector(state => state.genres)
     const [error, setError] = useState({})
+
     const [input, setInput] = useState({
         name: '',                   //required
         description: '',            //required
@@ -37,11 +38,17 @@ function Form() {
         genreTwo: '',
         platform: []   
     })
+
+
+
+
+
+
     useEffect(() => {
         dispatch(getGenres())
     },[dispatch])
-
-
+console.log("soy el input" , input)
+console.log("errrrrrror", error)
     const handleChange = (e) => {
         setInput({
             ...input,
@@ -67,6 +74,7 @@ function Form() {
     }
 
     const handleBoxs = (e) => {
+      
         let checked = e.target.checked
         if(checked) {
             setInput({
@@ -78,7 +86,11 @@ function Form() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await axios.post('http://localhost:3002/videogame', input)
+        if(Object.keys(error).length > 0) {
+                alert('El formulario no se mando debido a errores')
+           
+        } else {
+           await axios.post('http://localhost:3002/videogame', input)
         setInput({
             name: '',
             description: '',
@@ -87,7 +99,11 @@ function Form() {
             genreOne: '',
             genreTwo: '',             
             platform: []   
-        })
+        }) 
+      
+            
+        }
+        
     }
     
 
@@ -135,7 +151,7 @@ function Form() {
                         <select className={styles.createSelect} name="genreTwo" id ="genres" value ={input.genreTwo} onChange ={(e) => handleSelectTwo(e)}>
                             <option value= ""> -- select second genre -- </option>
                             {
-                                genres.map(g => { return ( <option value={g.id}>{g.name}</option> )})
+                                genres.map(g => { return ( <option className={styles.option} value={g.id}>{g.name}</option> )})
                             }
                         </select>   
                     </div>  

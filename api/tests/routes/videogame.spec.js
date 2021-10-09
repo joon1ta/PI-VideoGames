@@ -22,3 +22,25 @@ describe('Videogame routes', () => {
     );
   });
 });
+
+describe('GET /genres', () => {
+  it('should return all genres', () =>{
+    agent.get('/genres')
+    .expect(200)
+    .expect('Content-Type', /json/)
+    .expect((res) => {
+      expect(res.body).to.have.length(19)
+    })
+  })
+})
+
+describe('GET /videogames', () => {
+  it('should return all games', () => {
+    agent.get('/videogames')
+    .expect(200)
+    .expect('Content-Type', /json/)
+    .expect((res) => {
+      expect(res.body).to.have.length(100)
+    })
+  })
+})

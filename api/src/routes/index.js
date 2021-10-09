@@ -176,7 +176,10 @@ router.post('/videogame', async (req, res) => {
                         
              await newGame.addGenres(dbGenres)    
               
-             return res.send(newGame)
+            
+         
+            res.send(newGame);
+
         }
     }
     catch(error){

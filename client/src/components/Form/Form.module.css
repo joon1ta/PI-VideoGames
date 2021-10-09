@@ -18,7 +18,13 @@ background-position: center;
 background-repeat: no-repeat;
 
   }
-
+.option:checked {
+  background-color: var(--thirdColor);
+}
+.option:hover {
+  background-color: var(--thirdColor);
+  box-shadow: 0 0 10px 100px #db9b23 inset;
+}
   
   .createForm {
     
@@ -132,3 +138,9 @@ background-repeat: no-repeat;
     }
   
   }
+
+
+
+
+
+
