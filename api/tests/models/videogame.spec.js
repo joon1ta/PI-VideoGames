@@ -6,26 +6,14 @@ describe('Videogame model', () => {
     .catch((err) => {
       console.error('Unable to connect to the database:', err);
     }));
-  describe('Validators', () => {
-    beforeEach(() => Videogame.sync({ force: true }));
-    describe('name', () => {
-      it('should throw an error if name is null', (done) => {
-        Videogame.create({})
-          .then(() => done(new Error('It requires a valid name')))
-          .catch(() => done());
-      });
-      it('should work when its a valid name', () => {
-        Videogame.create({ name: 'Super Mario Bros' });
-      });
-    });
-  });
+ 
 
-  describe('Find genres in database', () => {
-    it('should have 19 items, this has been pre-charged', () => {
-      Genre.findAll()
-      .then(function (res){
-        expect(res.body).to.be.have.length(19)
-      })
-    })
-  })
+  // describe('Find genres in database', () => {
+  //   it('should have 19 items, this has been pre-charged', () => {
+  //     return Genre.findAll()
+  //     .then(function (res){
+  //       expect(res.body).to.have.length(19)
+  //     })
+  //   })
+  // })
 });

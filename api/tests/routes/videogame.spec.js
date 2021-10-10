@@ -2,45 +2,39 @@
 const { expect } = require('chai');
 const session = require('supertest-session');
 const app = require('../../src/app.js');
-const { Videogame, conn } = require('../../src/db.js');
+const {conn } = require('../../src/db.js');
 
 const agent = session(app);
-const videogame = {
-  name: 'Super Mario Bros',
-};
+
 
 describe('Videogame routes', () => {
   before(() => conn.authenticate()
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
   }));
-  beforeEach(() => Videogame.sync({ force: true })
-    .then(() => Videogame.create(videogame)));
-  describe('GET /videogames', () => {
-    it('should get 200', () =>
-      agent.get('/videogames').expect(200)
-    );
-  });
 });
 
-describe('GET /genres', () => {
+describe('GET /genres',  () => {
   it('should return all genres', () =>{
-    agent.get('/genres')
+    return agent
+   .get('/genres')
     .expect(200)
     .expect('Content-Type', /json/)
     .expect((res) => {
-      expect(res.body).to.have.length(19)
+       expect(res.body).to.have.length(19)
+      
     })
   })
 })
 
-describe('GET /videogames', () => {
-  it('should return all games', () => {
-    agent.get('/videogames')
+describe('GET /videogames/:id', () => {
+  it('should return game detail', () => {
+    return agent.get('/videogames/3498')
     .expect(200)
     .expect('Content-Type', /json/)
     .expect((res) => {
-      expect(res.body).to.have.length(100)
+      expect(res.body).to.have.ownProperty("slug")
+      expect(res.body).to.include({id: 3498})
     })
   })
 })
