@@ -5,6 +5,11 @@
   }
   @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200;300;500&display=swap');
 
+  .h1Titlenav {
+      font-size: 30px;
+      margin-left: 50px;
+      padding-top: 30px;
+  }
   
   button:hover {
      cursor: pointer;
@@ -12,7 +17,7 @@
 .buttonCreated {
     color: white;
     background-color:  var(--primaryColor);
-    width: 100px;
+    width: 150px;
     border: none;
     font-size: 24px;
 }
@@ -33,7 +38,9 @@
     font-family: 'Gemunu Libre', sans-serif;
     display: flex;
 }
-
+.divh1 a {
+    text-decoration: none;
+}
 .links{
     max-height: 80px;
     text-decoration: none;
@@ -56,10 +63,11 @@
 }
 
 .leftSide {
-    flex: 50%;
     display: flex;
     align-items: center;
     justify-content: left;
+    width: 250px;
+    margin-left: 100px;
 }
 .navBar .leftSide button {
     display: none;
@@ -69,14 +77,12 @@
    display: flex;
 }
 
-
-
 .rightSide {
-flex: 50%;
 display: flex;
 align-items: center;
 justify-content: flex-end;
 padding-right: 25px;
+margin-left: 100px;
 
 }
 .rightSide input {
@@ -90,15 +96,19 @@ padding-right: 25px;
     background-color: var(--secondaryColor);
     font-family: 'Gemunu Libre', sans-serif;
 }
+.button {
+    height: 30px;
+    padding-top: 3px;
+}
 
 .rightSide button {
-    height: 32px;
-    width: 50px;
+       width: 50px;
     font-size: 16px;
-    background-color: var(--secondaryColor);
-    color: var(--thirdColor);
+    background-color: var(--thirdColor);
+    color: white;
     border: none;
-    padding-top: 5px;
+   border-radius: 0px 2px 2px 0px;
+    
 }
 
 

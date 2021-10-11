@@ -133,7 +133,8 @@ router.get('/genres', async (req, res) => {
       return {name: categories.slug,
               id: categories.id}
     })
-
+   
+    console.log(category)
     await category.forEach(el => {
       Genre.findOrCreate({
         where: {name: el.name,

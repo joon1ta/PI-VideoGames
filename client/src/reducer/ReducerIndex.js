@@ -7,7 +7,8 @@ import {
     RATING_DESC,
     GENRE_FILTER,
     CREATED_GAME,
-    GET_GENRES
+    GET_GENRES,
+    ERROR
 } from '../actions/ActionIndex'
 
 
@@ -75,6 +76,7 @@ function rootReducer(state = initialState, action) {
             gamesFiltered = gamesFiltered.filter(game => game.genres.find(g => {
                 return g.name.toLowerCase() === action.payload
             }))
+           
             return { ...state, games: gamesFiltered}
             // return { ...state, games: gamesFiltered.filter((game) => {
             //     return game.genres.find((genre) => {
@@ -90,6 +92,11 @@ function rootReducer(state = initialState, action) {
                 games: state.games.filter(g => {
                     return g.id.length === 36 // buscamos si el id es mayor porque sabemos que los creados por el usuario tiene ams de 10 digitos
                 })
+            }
+        case ERROR:
+            return {
+                ...state,
+                games: ERROR
             }
         default:
             return state;

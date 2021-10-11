@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { genreFilter, getGames,  getGenres } from '../../actions/ActionIndex'
+import {createdGame} from '../../actions/ActionIndex'
 import styles from './Filters.module.css'
 function Filters() {
 
@@ -9,7 +10,9 @@ const genres = useSelector(state => state.genres)
 const handleReload = () => {
     dispatch(getGames());
 }
-
+const handleCreated = () => {
+    dispatch(createdGame());
+}
 
 useEffect(() => {
     dispatch(getGenres())
@@ -17,6 +20,7 @@ useEffect(() => {
 
     return (
         <div>
+              
             <h4 className={styles.h4Filter}>Filter by</h4>
             <div className={styles.containerButtons}>
                 {
@@ -29,7 +33,7 @@ useEffect(() => {
             
 
                 <button className={styles.buttonsFilters} onClick = {handleReload} >{'All Games'.toUpperCase()}</button>
-
+                <button className={styles.buttonsFilters} onClick={handleCreated}>{'Created Games'.toUpperCase()}</button>
                 
             </div>
         </div>

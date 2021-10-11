@@ -7,6 +7,7 @@
 .containerGames{
     display: grid;
     grid-template-columns: 15% 85%;
+    height: 1400px;
 }
 
 .containerFilters{
@@ -16,7 +17,9 @@
 .cards {
     display: grid;
     justify-content: center;
-    grid-template-columns: 30% 30% 30%;
+    grid-template-areas: 'left center right';
+
+    grid-template-columns: repeat(3, 30%);
     text-decoration: none;
     background-image: url('../img/img3.jpg');
 background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 30%, rgba(0, 0, 0, 0.438) 84%, rgba(0, 0, 0, 0.199) 100%), url('../img/img3.jpg');
@@ -39,20 +42,21 @@ body{
 
 .btnPage {
     background-color: black;
-    width: 35px;
+    width: 130px;
+    max-height: 40px;
     border-radius: 5px;
     color: var(--thirdColor);
     font-family: 'Staatliches', cursive;
-    font-size: 1.2em;
+    font-size: 14px;
     margin-top: 5px;
     margin-left: 10px;
     padding: 5px;
     letter-spacing: 2px;
     cursor: pointer;
     border: none;
-   
     text-align: center;
 }
+
 .btnPage:hover {
     border-color: var(--thirdColor);
     color: var(--thirdColor);
@@ -62,11 +66,11 @@ body{
 }
 
 .pagingcont{
-    width: 100%;
-    margin: 0 auto;
     display: flex;
-    justify-content: center;
+   justify-content: center;
     padding-bottom: 2vh ;
+  grid-row: 4;
+  grid-column: center;
 }
 
 

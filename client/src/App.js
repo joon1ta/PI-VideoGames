@@ -5,13 +5,18 @@ import {BrowserRouter, Route, Switch } from 'react-router-dom';
 import GameDetail from './components/GameDetails/GameDetails';
 import Form from './components/Form/Form';
 import Footer from './components/Footer/Footer'
+import Navbar from './components/Nav/Navbar'
 function App() {
   return (
+    
     <BrowserRouter>
+    <Navbar />
     <Switch>
   
     <Route exact path='/'> <Landing /> </Route>
+    
     <Route path='/home'> <Home /> </Route>
+    
     <Route path="/gamedetail/:id"> <GameDetail /> </Route> 
     <Route path="/creategame/"> <Form /> </Route> 
    

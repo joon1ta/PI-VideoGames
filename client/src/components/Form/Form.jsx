@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import styles from './Form.module.css'
 import {getGenres} from '../../actions/ActionIndex'
 
@@ -25,6 +25,7 @@ const validateForm = (input) => {
 
 
 function Form() {
+    const history = useHistory()
     const dispatch = useDispatch()
     const genres = useSelector(state => state.genres)
     const [error, setError] = useState({})
@@ -39,7 +40,9 @@ function Form() {
         platform: []   
     })
 
-
+ 
+    
+ 
 
 
 
@@ -100,7 +103,8 @@ console.log("errrrrrror", error)
             genreTwo: '',             
             platform: []   
         }) 
-      
+        alert('Juego creado exitosamente')
+        history.push('/home')
             
         }
         

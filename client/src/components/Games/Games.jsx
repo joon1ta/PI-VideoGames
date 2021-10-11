@@ -5,14 +5,15 @@ import GameCard from '../GameCard/GameCard'
 import { Link } from 'react-router-dom';
 import styles from './Games.module.css'
 import Filters from '../Filters/Filters'
-
+import Loading from '../Loading/Loading'
+import Error from '../Error/Error'
 function Games() {
 
 const games = useSelector(state => state.games)
 const dispatch = useDispatch();
 const [current, setCurrent] = useState(0);
 const [gamesPerPage, setGamesPerPage] = useState(9);
-
+const [loading, setLoading] = useState(true)
 
 
 
@@ -35,13 +36,24 @@ const prevPage = () => {
 }
 
 useEffect(() => {
-   dispatch(getGames())
+   dispatch(getGames()).then(() => setLoading(false))
    
 }, [dispatch])
 
+if(loading) {
+    console.log(loading)
+    return (
+        <div>
+            <Loading /> 
+        </div>
+       
+    )
+} else {
 
+    console.log(loading)
 
     return (
+        <>
         <div className={styles.containerGames}>
             
                <div className={styles.containerFilters}>
@@ -49,9 +61,9 @@ useEffect(() => {
                   
                </div>
                
-        <div className={styles.cards}>
+                <div className={styles.cards}>
       
-            {
+                { games === 'ERROR' ? <Error /> :
                 games.createInDatabase ?
 
                 <GameCard  name={games.name} image={games.image} rating={games.rating} genres={games.genres} key={games.id}/>
@@ -63,17 +75,18 @@ useEffect(() => {
                         </Link>
                     )
                 }).slice(current, gamesPerPage) 
-            }
-          <div className ={styles.pagingcont}>
-          <button className={styles.btnPage} onClick={prevPage}>&lt;</button>
-          <button className={styles.btnPage} onClick={nextPage}>&gt;</button>
-          </div>
-        </div>
-          
-      
+                }
+            
+        <div className ={styles.pagingcont}>
+         <button className={styles.btnPage} onClick={prevPage}>&lt; Prev Page</button>
+         <button className={styles.btnPage} onClick={nextPage}>Next Page &gt;</button>
+         </div>
+                </div>
+       
         </div>
        
+       </>
     )
 }
-
+}
 export default Games

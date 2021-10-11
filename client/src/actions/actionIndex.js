@@ -9,7 +9,7 @@ export const RATING_DESC = "RATING_DESC"
 export const GENRE_FILTER = "GENRE_FILTER"
 export const CREATED_GAME = "CREATED_GAME"
 export const GET_GENRES = "GET_GENRES"
-
+export const ERROR = "ERROR"
 
 
 
@@ -47,6 +47,12 @@ export function searchGames(name) {
                         payload: response.data
                     })
                 })
+                .catch(error => {
+                    dispatch({
+                        type: ERROR
+                    })
+                })
+                
     }
 }
 

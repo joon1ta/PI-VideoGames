@@ -1,5 +1,5 @@
 .h4Orders {
-    color: white;
+    color: var(--thirdColor);
     font-size: 24px;
     font-weight: normal;
 }
@@ -17,7 +17,7 @@
 
 .buttonsOrders{
     margin-left: 15px;
-    color: var(--thirdColor);
+    color: white;
     font-size: 15px;
     letter-spacing: 1px;
     background-color: var(--primaryColor);
@@ -26,6 +26,6 @@
 }
 
 .buttonsOrders:hover {
-    color: white;
+    color: var(--thirdColor);
     transition: all ease 0.5s;
 }

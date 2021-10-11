@@ -7,11 +7,16 @@
 
 .h4Filter {
     font-size: 30px;
-    text-align: center;
+    margin-left: 50px;
+
+    text-align: left;
     color: var(--thirdColor);
+    margin-top: 35px;
 }
 
 .buttonsFilters{
+    text-align: left;
+    margin-left: 50px;
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: 15px;
