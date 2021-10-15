@@ -34,7 +34,7 @@ function Form() {
         name: '',                   //required
         description: '',            //required
         release_date: '',           // required
-        rating: '',                 // required max 5 puntos
+        rating: '',                 // required 
         genreOne: '',
         genreTwo: '',
         platform: []   
@@ -50,8 +50,11 @@ function Form() {
     useEffect(() => {
         dispatch(getGenres())
     },[dispatch])
+
 console.log("soy el input" , input)
 console.log("errrrrrror", error)
+
+
     const handleChange = (e) => {
         setInput({
             ...input,
