@@ -1,90 +1,92 @@
 :root {
-    --primaryColor: #1B1B23;
-    --secondaryColor: #26262E;
-    --thirdColor: #FB8C07;
-  }
-@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200;300;500&display=swap');
-.containerGames{
-    display: grid;
-    grid-template-columns: 15% 85%;
-    height: 1400px;
+  --primaryColor: #1b1b23;
+  --secondaryColor: #26262e;
+  --thirdColor: #fb8c07;
+}
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200;300;500&display=swap");
+.containerGames {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  height: 1400px;
 }
 
-.containerFilters{
-    display: flex;
-    flex-direction: column;
+.containerFilters {
+  display: flex;
+  flex-direction: column;
 }
 .cards {
-    display: grid;
-    justify-content: center;
-    grid-template-areas: 'left center right';
+  display: grid;
+  justify-content: center;
+  grid-template-areas: "left center right";
 
-    grid-template-columns: repeat(3, 30%);
-    text-decoration: none;
-    background-image: url('../img/img3.jpg');
-background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 30%, rgba(0, 0, 0, 0.438) 84%, rgba(0, 0, 0, 0.199) 100%), url('../img/img3.jpg');
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-    
+  grid-template-columns: repeat(3, 30%);
+  text-decoration: none;
+  background-image: url("../img/img3.jpg");
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.72) 30%,
+      rgba(0, 0, 0, 0.438) 84%,
+      rgba(0, 0, 0, 0.199) 100%
+    ),
+    url("../img/img3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .links {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-body{
-    font-family: 'Gemunu Libre', sans-serif;
-    background-color: var(--secondaryColor);
-
-
+body {
+  font-family: "Gemunu Libre", sans-serif;
+  background-color: var(--secondaryColor);
 }
 
 .btnPage {
-    background-color: black;
-    width: 130px;
-    max-height: 40px;
-    border-radius: 5px;
-    color: var(--thirdColor);
-    font-family: 'Staatliches', cursive;
-    font-size: 14px;
-    margin-top: 5px;
-    margin-left: 10px;
-    padding: 5px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    border: none;
-    text-align: center;
+  background-color: black;
+  width: 130px;
+  max-height: 40px;
+  border-radius: 5px;
+  color: var(--thirdColor);
+  font-family: "Staatliches", cursive;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-left: 10px;
+  padding: 5px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border: none;
+  text-align: center;
 }
 
 .btnPage:hover {
-    border-color: var(--thirdColor);
-    color: var(--thirdColor);
-    border: solid 1px;
-    border-radius: 4px;
-    transition: 2s ease all;
+  border-color: var(--thirdColor);
+  color: var(--thirdColor);
+  border: solid 1px;
+  border-radius: 4px;
+  transition: 2s ease all;
 }
 
-.pagingcont{
-    display: flex;
-   justify-content: center;
-    padding-bottom: 2vh ;
+.pagingcont {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2vh;
   grid-row: 4;
   grid-column: center;
 }
 
-
-@media (max-width: 1200px){
-    .cards {
-        display: grid;
-        grid-template-columns: 45% 45%;
-        justify-content: center;
-    }
+@media (max-width: 1200px) {
+  .cards {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    justify-content: center;
+  }
 }
-@media (max-width: 750px){
-    .cards {
-        display: grid;
-        grid-template-columns: 80%;
-        justify-content: center;
-    }
+@media (max-width: 750px) {
+  .cards {
+    display: grid;
+    grid-template-columns: 80%;
+    justify-content: center;
+  }
 }

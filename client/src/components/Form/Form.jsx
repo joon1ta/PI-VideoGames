@@ -13,8 +13,8 @@ const validateForm = (input) => {
         error.name = "Name is invalid"  
     } else if(!input.description) {
         error.description = "Description is required"
-    } else if(input.rating > 5) {
-        error.rating = "The max rating is 5"
+    } else if(input.rating > 5 || input.rating < 0) {
+        error.rating = "The rating goes from 0 to 5"
     }
     return error;
 }

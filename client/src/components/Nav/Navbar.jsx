@@ -16,14 +16,14 @@ const [showLinks, setShowLinks] = useState(false);
     return (
     <nav className={styles.navBar}>
         <div  className={styles.divh1}>
-           <Link to='/home'> 
+           <Link to='/'> 
            <h1 className={styles.h1Titlenav}><span>Game</span> Network</h1>
            </Link>  
             
             </div> 
        <div className={styles.leftSide}>
            <div className={styles.links} id={showLinks ? "hidden" : ""}>
-           <Link to='/'>Home</Link>
+           <Link to='/home'>Home</Link>
          
         
            <Link to='/creategame'>Create Game</Link>

@@ -18,7 +18,22 @@ router.get("/videogames", async (req, res) => {
     
     const games1 = await axios.get(`${URL}games?key=${YOUR_API_KEY}`); // Consulta a la api para listar juegos por defualt nos trae 20
     games_page2 = games1.data.next; // desde axios siempre accedemos a su respuesta con .data y el .result son los datos que queremos de la api
+    
+    // axios.get(`${URL}games?key=${YOUR_API_KEY}`)
+    // .then(response => {
+
+    //    const gamesPrueba = response.data.results
+    //    console.log('GAMES PRUEBA', gamesPrueba[0])
+    //   return gamesPrueba
+    // }).catch(error => {
+    //   console.log(error)
+    // })
+   
     const games2 = await axios.get(games_page2)
+
+    // axios.get(games_page2).then(res => {
+    //   games2 = res.data
+    // })
     games_page3 = games2.data.next
     const games3 = await axios.get(games_page3)
     games_page4 = games3.data.next
@@ -35,6 +50,8 @@ router.get("/videogames", async (req, res) => {
          released: game.released,
          rating: game.rating,
          platforms: game.platforms,
+         stores: game.stores,
+         shortImage: game.short_screenshots,
        genres: game.genres,
          
        };
